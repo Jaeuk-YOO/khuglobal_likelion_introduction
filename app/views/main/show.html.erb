@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+
+   <head>
+       
+      <meta charset="UTF-8">
+      <title>Home - Hillside Community Church</title>
+      <META HTTP-EQUIV="Page-Enter" CONTENT="BlendTrans(Duration=0.2)">
+      <META HTTP-EQUIV="Page-exit" CONTENT="BlendTrans(Duration=0.2)">
+          
+      
+      
+    
+   </head>
+               
+                               
+    <form>
+        <div class="form-group">
+            <label for="exampleInputPassword1">첫번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input1" placeholder="번호를 입력해주세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">두번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input2" placeholder="번호를 입력해주세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">세번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input3" placeholder="번호를 입력해주세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">네번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input4" placeholder="번호를 입력해주세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">다섯번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input5" placeholder="번호를 입력해주세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">여섯번째 번호</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="input6" placeholder="번호를 입력해주세요">
+        </div>
+        
+        
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                          Launch demo modal
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="myModal">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                당신이 입력한 숫자는 <%= @input_number %>  <br>
+                                로또 당첨 숫자는 (몇주차기준) <%= @lotto_number %>
+                                당신의 결과는 <%= @result %><br>
+                                <%= @count1 %><br>
+                                <%= @count2 %>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        
+        
+    </form>
+        
+            
+          
+  
+    
+</body>
+
+</html>
+

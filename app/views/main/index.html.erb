@@ -1,0 +1,1363 @@
+<!DOCTYPE HTML>
+<html>
+
+
+   <head>
+       
+      <meta charset="UTF-8">
+      <title>likelion_at_kyunghee_inter</title>
+      
+      <script>
+          $('#play-video').on('click', function(event){
+              event.preventDefault();
+              $('#video-overlay').addClass('open'); 
+              $('#video-overlay').append('<iframe width="650" height="400"  src="/ot-video.mp4" frameborder="0" allowfullscreen></iframe>');
+            });
+            
+            $('.video-overlay, .video-overlay-close').on('click', function(e){
+              e.preventDefault();
+              close_video();
+            });
+            
+            $(document).keyup(function(e){
+              if(e.keyCode === 27) { close_video(); }
+            });
+            
+            function close_video() {
+              $('.video-overlay.open').removeClass('open').find('iframe').remove();
+            };
+      </script>
+      
+      <script>
+             
+              $('.video').click(function(){this.paused?this.play():this.pause();});
+             
+      </script>
+      
+      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+      <script>
+            function fnMove(seq){
+                var offset = $("#slide" + seq).offset();
+                $('html, body').animate({scrollTop : offset.top}, 400);
+            }
+      </script>
+
+      
+
+      
+      <META HTTP-EQUIV="Page-Enter" CONTENT="BlendTrans(Duration=0.2)">
+      <META HTTP-EQUIV="Page-exit" CONTENT="BlendTrans(Duration=0.2)">
+      <script src="https://use.fontawesome.com/f9d281a34b.js"></script>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <link href="styles/ihover.css" rel="stylesheet">
+      <link href="styles/button.css" rel="stylesheet">
+      
+      <style>
+      
+        @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+        @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,500|Roboto:700');
+        
+        
+        html{
+            width: 100%;
+            max-width: 100%;
+        }
+         body {
+             background-size: cover;
+             background-position: center, center;
+             background-attachment: fixed;
+             background-repeat: no-repeat;
+             color: #292728;
+             height: 100%;
+             width: 100%;
+             padding: 0;
+             margin: 0;
+             max-width: 100%;
+               }
+               
+               
+        .video-play-button {
+                              position: absolute;
+                              z-index: 10;
+                              top: 10%;
+                              left: 50%;
+                              transform: translateX(-50%) translateY(-50%);
+                              box-sizing: content-box;
+                              display: block;
+                              width: 32px;
+                              height: 60px;
+                              /* background: #fa183d; */
+                              border-radius: 50%;
+                              padding: 18px 20px 18px 28px;
+                            }
+
+        .video-play-button:before {
+                                      content: "";
+                                      position: absolute;
+                                      z-index: 0;
+                                      left: 50%;
+                                      top: 30%;
+                                      transform: translateX(-50%) translateY(-50%);
+                                      display: block;
+                                      width: 60px;
+                                      height: 60px;
+                                      background: #ba1f24;
+                                      border-radius: 50%;
+                                      animation: pulse-border 1500ms ease-out infinite;
+                                      margin-left : auto;
+                                      margin-top : auto;
+                                    }
+        
+        .video-play-button:after {
+                                  content: "";
+                                  position: absolute;
+                                  z-index: 1;
+                                  left: 50%;
+                                  top: 30%;
+                                  transform: translateX(-50%) translateY(-50%);
+                                  display: block;
+                                  width: 60px;
+                                  height: 60px;
+                                  background: #fa183d;
+                                  border-radius: 50%;
+                                  transition: all 200ms;
+                                  margin-left : auto;
+                                  margin-top : auto;
+                                }
+        
+        .video-play-button:hover:after {
+                                          background-color: darken(#fa183d, 10%);
+                                        }
+        
+        .video-play-button img {
+                                  position: relative;
+                                  z-index: 3;
+                                  max-width: 100%;
+                                  width: auto;
+                                  height: auto;
+                                }
+        
+        .video-play-button span {
+                                  display: block;
+                                  position: relative;
+                                  z-index: 3;
+                                  width: 0;
+                                  height: 0;
+                                  border-left: 32px solid #fff;
+                                border-top: 22px solid transparent;
+                                border-bottom: 22px solid transparent;
+                                bottom:17%;
+                                }
+        
+        @keyframes pulse-border {
+          0% {
+            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+            opacity: 0;
+          }
+        }
+        
+        
+        
+        .video-overlay {
+                          position: fixed;
+                          z-index: -1;
+                          top: 0;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: rgba(0,0,0,0.80);
+                          opacity: 0;
+                          transition: all ease 500ms;
+                        }
+        
+        .video-overlay.open {
+                              position: fixed;
+                              z-index: 1000;
+                              opacity: 1;
+                            }
+        
+        .video-overlay-close {
+                                  position: absolute;
+                                  z-index: 1000;
+                                  top: 15px;
+                                  right: 20px;
+                                  font-size: 36px;
+                                  line-height: 1;
+                                  font-weight: 400;
+                                  color: #fff;
+                                  text-decoration: none;
+                                  cursor: pointer;
+                                  transition: all 200ms;
+                                }
+        
+        .video-overlay-close:hover {
+                                      color: #fa183d;
+                                    }
+        
+        .video-overlay iframe {
+                                  position: absolute;
+                                  top: 50%;
+                                  left: 50%;
+                                  transform: translateX(-50%) translateY(-50%);
+                                  /* width: 90%; */
+                                  /* height: auto; */
+                                  box-shadow: 0 0 15px rgba(0,0,0,0.75);
+                                }
+        
+        
+        .slide{
+            height: auto;
+            padding-top: 8%;
+            background-size: cover;
+        }
+        
+        /*main 첫화면*/
+         #slide1 {
+             background: url('/assets/main2.jpg') ;
+             background-attachment: fixed;
+             /*background-size: cover;*/
+             color:white;
+             max-width: 100%;
+             text-align:center;
+             background-size : contain;
+             }
+             
+        #slide5 {
+            background-image: url("/assets/festival.jpg");
+            max-width: 100%;
+            height:auto;
+            text-align: center;
+            /*padding-top: 30%;*/
+            background-size : contain;
+            background-position:center;
+            background-repeat: no-repeat;
+        }
+         
+        #slide8 {
+            background-color : black;
+            color: white;
+            height: 200px;
+            text-align : left;
+            padding-bottom:25%;
+         }
+         
+         /*오티영상*/
+         #slide7 {
+            background-image: url("/assets/video-pic.png");
+            max-width:100%;
+            background-size: 100%;
+            background-repeat : no-repeat;
+        } 
+         
+        
+         #main-intro {
+             /*font-family: 'Jeju Gothic', sans-serif;*/
+             font-family: 'Jeju Myeongjo', serif;
+             font-weight: 100;
+             font-size: 18px;
+             text-align: center;
+             color: white;
+             padding-top: 430px;
+             line-height: 150%;
+         }
+        
+         /*#main-image:after {*/
+         /*     content: "";*/
+         /*     display: block;*/
+         /*     width: 50px;*/
+         /*     border-bottom: 1px solid #bcbcbc;*/
+         /*     margin: 20px 0px;*/
+         /*   }*/
+         
+        
+        
+        .member-image{
+            width : 200px;
+        }
+        
+        .navbar-fixed-top {
+            min-height : 60px;
+            background: white;
+            width:100%;
+        }
+        .navbar-brand{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align:center;
+            margin:0 auto;
+            margin-top:5px;
+        }
+
+        .navbar-toggle {
+            z-index:3;
+        }
+        
+        .page-scroll {
+            height:100%;
+            cursor: pointer;
+        }
+        
+        /*대제목*/
+        h2 {
+            font-family: 'Roboto', sans-serif; font-size: 2.5em;
+        }
+               
+       /*소제목*/
+        h3 {
+            font-family: 'Jeju Gothic', sans-serif; 
+            /*font-family: 'Jeju Myeongjo', serif;*/
+            font-weight: bold; 
+            font-size: 1.4em;
+        }
+        
+        /*설명글*/
+        h5 {
+            font-family: 'Jeju Gothic', sans-serif; 
+            /*font-family: 'Jeju Myeongjo', serif;*/
+            font-size: 1.0em; 
+            color: gray;
+            /*font-weight: lighter; */
+            line-height: 130%;
+        }
+        
+        /*랜덤게임 게임설명*/
+        h6 {
+            font-family: 'Jeju Gothic', sans-serif;
+            font-size: 1em; 
+        }
+        
+        /*인포메이션 및 후기*/
+        h8 {
+            font-family: 'Roboto', sans-serif; font-weight:500;
+            color : white;
+            font-size : 2em;
+        }
+        
+        /*멤버소개 마우스오버글자체*/
+        h9, h10 {
+            font-family: 'Jeju Gothic', sans-serif;
+            font-size: 1em; 
+            color:white;
+            opacity: 0.8;
+            /*margin-top: 50%;*/
+        }
+        
+        /*운영진 소제목*/
+        h11 {
+            font-family: 'Jeju Gothic', sans-serif;
+            font-size: 2em; 
+        }
+        
+        
+        .info-back {
+            padding-top : 50px;
+            text-align : center;
+        }
+        
+        @media screen and (max-width:480px) {
+        body {
+          width: auto;
+        }
+        
+
+        /*오티영상*/
+        
+
+      </style>
+   </head>
+   
+   
+   
+   <body>
+       
+       
+     <!--nav-bar-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            
+                <nav class="navbar navbar-default navbar-fixed-top" style="font-family: 'Raleway', sans-serif; 
+                font-weight:500; width: 100%; max-width:100%">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                       
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
+                            <a class="navbar-brand page-scroll" href="#page-top">
+                                <img src="/assets/logo_wine.png" style="height: 40px; width:auto; margin: auto; margin-top: px;"></a>
+                            <ul class="nav navbar-nav navbar-left" style="font-size: 17px; display: table; text-align:center">
+                                
+                                <li><a class="page-scroll" onclick="fnMove('2')" 
+                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseout="this.style.color='black'; this.style.background='white';"
+                                style="color: black; padding: 35px;">Our Project</a></li>
+                                
+                                <li><a class="page-scroll" onclick="fnMove('4')" 
+                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseout="this.style.color='black'; this.style.background='white';"
+                                style="color: black; padding: 35px;">Schedule</a></li>
+                                
+                            </ul>
+                        
+                            <ul class="nav navbar-nav navbar-right" style="font-size: 17px; display: table;">
+                                
+                                <li><a class="page-scroll" onclick="fnMove('5')" 
+                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseout="this.style.color='black'; this.style.background='white';"
+                                style="color: black; padding:35px;">KHU Festival</a></li>
+                                
+                                <li><a class="page-scroll" onclick="fnMove('6')" 
+                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseout="this.style.color='black'; this.style.background='white';"
+                                style="color: black; padding:35px;">Members</a></li>
+                                
+                            </ul>
+                        </div> 
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+ 
+
+    <!--첫페이지-->
+    <section id="slide1" class="slide" style="height: 180%"> 
+    
+        <!--main-image_logo_intro-->
+             <div style="width:100%; margin-top: 2%;">
+                 <img src="/assets/white_line_4.png" align="absmiddle" style="margin:3% auto;">
+             </div>
+            
+            <p style="padding-top: 1%; padding-bottom: 10%; font-size:18px; text-align:center; font-family: 'Jeju Gothic', sans-serif;">‘멋쟁이사자처럼’은 비전공자를 대상으로 프로그래밍 교육을 실시하여<br> 원하는 서비스를 구현하도록 돕는 활동입니다.<br> 
+               경희대 at 국제캠퍼스 멋쟁이사자처럼은<br> 2016년 4기를 시작으로 현재 2017년 5기까지 활동하고 있습니다.</p>
+             
+     </section>
+    
+    <!--경희대 멋사활동-->
+    <section id="slide2" class="slide" style="height:100%;" >
+        <div class="container" style="height:100%; padding-left:0;">
+            <div>
+            <h2 style="margin-bottom: 30px;"><strong>Our Project</strong></h2>
+            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            </div>
+            
+        </div>
+        
+        <!--자기소개-->
+        
+        <div class="container" style="height:100%; padding-top:5%; padding-left: 0px; padding-right: 0px;
+        margin-bottom:3%;">
+            <div class="row">
+              <div class="col-sm-3 col-md-3" style="margin-bottom:4%;"><h3>01 자기소개 페이지 </h3></div>
+              <div class="col-sm-8 col-md-8" style="padding: 1%;">
+                  <h5>첫 주 html과 css 교육이 끝난 후 5기 멤버들이  제작한 자기소개 페이지입니다.</h5> 
+                  </div>
+            </div>
+            <div class="row">
+                <div style="margin-right:3%">
+                </div>
+                <div>
+                    <a class="col-md-4 col-sm-4" href="https://ydkfirstassignment-dkyou7.c9users.io/index.html">
+                        <img src="/assets/dongkwan-sogae.JPG" alt="유동관소개페이지" class="img-thumbnail" 
+                        style="float: left; width: 100%; margin-right:3%">
+                    </a>
+                    <a class="col-md-4 col-sm-4" href="https://baorohyun.github.io/">
+                        <img src="/assets/bohyun-sogae.png" alt="김보현소개페이지" class="img-thumbnail" 
+                        style="float: left; width: 1000%; margin-right:3%">
+                    </a>
+                    <a class="col-md-4 col-sm-4" href="https://ryuseounghan.github.io/profile">
+                        <img src="/assets/sunghan-sogae.png" alt="류성한소개페이지" class="img-thumbnail" 
+                        style="float: left; width: 100%;">
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+        
+        
+    	<!--2. 로또 -->
+    	
+        <div class="container" style="height:100%; padding-top:5%; padding-left: 0px; padding-right: 0px; margin-bottom: 3%;">
+            
+              <div class="row">
+                  <div class="col-sm-3 col-md-3" style="margin-bottom:4%;"><h3>02 로또 뽑기 </h3></div>
+                  <div class="col-sm-8 col-md-8" style="padding: 1%;">
+                    <h5>랜덤으로 뽑은 숫자를 실제 지난 회차의 로또 당첨 번호와 비교하여 당첨 결과를 확인해 봅니다.</h5> 
+                  </div>
+             </div>
+              <div>
+                  <img src="/assets/lotto-page.png" style="width:100%">
+              </div>
+              
+            </div>
+            
+        </div>
+
+    
+    	<!--3. 아이디어톤-->
+    		
+    	<div class="container" style="height:100%; padding-top:0%; padding-left: 0px; padding-right: 0px; margin-bottom: 3%;">
+            <div class="row" style="padding-bottom: 6%;">
+              <div class="col-sm-3 col-md-3"><h3>03 아이디어톤 </h3></div>
+              <div class="col-sm-8 col-md-8" style="padding-top: 0.5%;"><h5>아이디어톤이란 아이디어(idea)와 마라톤(marathon)의 합성어로,<br> 
+    		    	  마라톤을 하듯 짧은 시간 동안 효과적으로 아이디어를 도출하여 발표합니다. <br>
+    		    	  지난 5월 2일 경희대 멋사에서 아이디어톤을 진행하여 <br>
+    		    	  자신이 가진 아이디어를 구체화하고 피드백을 받는 시간을 가졌습니다.</h5> </div>
+              </div>
+              <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-xs-6 col-md-5 ">
+                        <div class="ih-item square effect13 bottom_to_top" 
+                        style="margin-left: 35%; margin-right: auto; width:60%; height:auto; "><a>
+                            <div class="img"><img src="/assets/jari.png">
+                            </div>
+                            <div class="info" style="font-family: 'Jeju Gothic', sans-serif;">
+                                <h3>김도훈</h3>
+                                <p>기간 별 사용자가 바뀌는 사물함 자리를 오프라인  으로 신청함에 따른 불편함을 개선하기 위한 서비스.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-5">
+                        <div class="ih-item square effect13 bottom_to_top" 
+                        style="margin-left: auto; margin-right: 35%;  width:60%; height:auto;"><a>
+                            <div class="img"><img src="/assets/dongdong.png"></div>
+                            <div class="info"  style="font-family: 'Jeju Gothic', sans-serif;">
+                                <h3>류성한 유재경</h3>
+                                <p>1인 가구의 급증과 함께 주거비용에 대한 고민에서 착안하여, '공유 형태'로의 주거 방식을 보조할 수 있는 서비스를 기획하였다.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-xs-6 col-md-5 ">
+                        <div class="ih-item square effect13 bottom_to_top"
+                        style="margin-left: 35%; margin-right: auto;  width:60%; height:auto;"><a>
+                            <div class="img"><img src="/assets/estadio.png"></div>
+                            <div class="info"  style="font-family: 'Jeju Gothic', sans-serif;">
+                                <h3>김문석</h3>
+                                <p>축구에 대한 흥미를 가진 사람들이 쉽게 모여 운동하고, 경기를 녹화공유함으로써 양질의 아마추어 축구시장을 양성되길 바라는 마음에서 기획하였다.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                      
+                    <div class="col-xs-6 col-md-5">
+                        <div class="ih-item square effect13 bottom_to_top" 
+                        style="margin-left: auto; margin-right: 35%; width:60%; height:auto;"><a>
+                            <div class="img"><img src="/assets/fishing.png"></div>
+                            <div class="info"  style="font-family: 'Jeju Gothic', sans-serif;">
+                                <h3>유동관</h3>
+                                <p>기존의 판매자 중심의 중고시장에서<br> 구매자 중심의 중고시장으로.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+    		</div>
+        
+            		 
+        <!--4. 랜덤게임	 -->
+    	<div class="container" style="height:100%; padding-top:5%; padding-bottom:0px; padding-left: 0px; padding-right: 0px; margin-bottom: 3%;">
+            <div class="row" style="padding-bottom: 5%;">
+              <div class="col-sm-3 col-md-3"><h3>04 랜덤 게임 </h3></div>
+              <div class="col-sm-8 col-md-8" style="padding-top: 15px;"><h5>자신의 아이디어로 만든 랜덤게임</h5> </div>
+            </div>
+            <div class="container align:center" style="">
+            
+                <div class="swiper-container swiper-container-horizontal swiper-container-3d swiper-container-coverflow" style="cursor: grab; text-align:center;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/유재경.JPG" class="rounded" alt="" >
+                                <div class="caption">
+                                    <h6>오늘은 이거 먹어</h6>
+                                    <h6>by 유재경</h6>
+                                    <h6>
+                                        <a href="http://52.32.242.225/" target="_blank" class="btn btn-default" >보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/류성한.JPG" class="rounded" alt="">
+                                <div class="caption">
+                                    <h6>미래가 보인다</h6>
+                                    <h6>by 류성한</h6>
+                                    <h6>
+                                        <a href="http://54.186.237.41/" target="_blank" class="btn btn-default">보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/김도훈.JPG" class="rounded" alt="">
+                                <div class="caption">
+                                    <h6>미궁</h6>
+                                    <h6>by 김도훈</h6>
+                                    <h6>
+                                        <a href="http://34.208.208.50/khu/index" target="_blank" class="btn btn-default">보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/정준현.JPG" class="rounded" alt="">
+                                <div class="caption">
+                                    <h6>롤 티어 측정기</h6>
+                                    <h6>by 정준현</h6>
+                                    <h6>
+                                        <a href="http://34.209.184.21" class="btn btn-default">보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/정경학.JPG" class="rounded" alt="">
+                                <div class="caption">
+                                    <h6>당신의 전생은?</h6>
+                                    <h6>by 정경학</h6>
+                                    <h6>
+                                        <a href="http://52.79.222.36" class="btn btn-default">보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="thumbnail rounded" style="border: white;">
+                                <img src="/assets/서원석.JPG" class="rounded" alt="">
+                                <div class="caption">
+                                    <h6>당신이 주시 할 것</h6>
+                                    <h6>by 서원석</h6>
+                                    <h6>
+                                        <a href="http://35.161.7.54" class="btn btn-default">보러가기</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next swiper-button-black"></div>
+          		    <div class="swiper-button-prev swiper-button-black"></div>
+        
+                </div>
+            </div>
+        </div>	 
+    	
+    </section>
+    
+    <!--앞으로 할 활동-->
+    
+    <section id="slide4" class="slide" style="height:100%; margin-bottom:5%;">
+        <div class="container" style="height:100%; padding-left:0;">
+            <div>
+            <h2 style="margin-bottom: 40px;"><strong>Schedule</strong></h2>
+            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            </div>
+        </div>
+        <div class="container" style="height:86%">
+            <img src="/assets/schedule-page-last-2.png" class="rounded mx-auto d-block center-block" alt="축제" 
+            style="width:100%"; "height:auto";>
+        </div>
+    </section>
+    
+    
+    <!--축제페이지-->
+    
+    <section id="slide5" class="slide " style="height:100%;">
+        
+            <div class="container" style="text-align:center; max-width:100%; min-height:700px;">
+                <a href="https://khu-festival-ryucastle.c9users.io/" target="_blank">
+                <img src="/assets/khufestical_logo_white2.png" style="width:80%; height:auto; padding-top:33%;">
+                </a>
+            </div>
+            
+        
+    </section>
+    
+    <!--멤버소개-->
+    <section id="slide6" class="slide" style="height:100%; padding-left:0; margin-bottom: 8%; padding-top:5%;">
+        <div class="container" style="height:100%; padding-left:0; padding-top:5%">
+            <div>
+            <h2 style="margin-bottom: 40px;"><strong>Members</strong></h2>
+            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            </div>
+        </div>
+         
+         
+         
+        <div class="container" style="height:100%; margin-top:5%;">
+            <h11>운영진</h11>
+            
+            <div class="row" >
+                  
+                <div class="col-1">
+                </div>
+                
+                <div class="col-10" style="height: 180px; margin-top: 5%">
+                    <div class="container" style="width:860px; margin-left:auto;"> 
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                            <a href="https://www.facebook.com/kyeonguk.jang?fref=ts" target="_blank">
+                                <div class="img">
+                                    <img src="/assets/0_2장경욱.jpg" alt="장경욱" style="width: 160px; height: 160px">
+                                </div>
+                                <div class="info" style="width: 160px; height: 160px;">
+                                    <div class="info-back">
+                                          
+                                          <h9>장경욱</h9>
+                                          <h10>기계공학과</h10>
+                                          
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                          <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/ryou9305?fref=ts" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/0_1유재욱.jpg" alt="유재욱" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>유재욱</h9>
+                                          <h10>한국어학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                          </div>
+                        </div>
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/yujin.seo.900?fref=ts" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/0_4서유진.jpg" alt="서유진" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>서유진</h9>
+                                          <h10>프랑스어학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+   
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/yoneuwon" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/0_5원지현.jpg" alt="원지현" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>원지현</h9>
+                                          <h10>시각디자인과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                
+                
+                
+                <div class="col-1">
+                </div>
+            </div>
+            
+            <div class="row" >
+                  
+                <div class="col-1">
+                </div>
+                
+                <div class="col-10" style="height: 180px;">
+                    <div class="container" style="width:860px; margin-left:auto;"> 
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                            <a href="https://www.facebook.com/aileen.hwang.9?fref=ts" target="_blank">
+                                <div class="img">
+                                    <img src="/assets/0_3황경희.jpg" alt="황경희" style="width: 160px; height: 160px">
+                                </div>
+                                <div class="info" style="width: 160px; height: 160px;">
+                                    <div class="info-back">
+                                          
+                                          <h9>황경희</h9>
+                                          <h10>국제학과</h10>
+                                          
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+                       
+                
+            <div style="margin-top:5%;">
+            <h11>5기 Members</h11> 
+            <div class="row" >
+                  
+                <div class="col-1">
+                </div>
+                
+                <div class="col-10" style="height: 180px; margin-top: 5%">
+                    <div class="container" style="width:860px; margin-left:auto;"> 
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                            <a href="https://www.facebook.com/profile.php?id=100003290396364" target="_blank">
+                                <div class="img">
+                                    <img src="/assets/hyunwoo.jpg" alt="김현우" style="width: 160px; height: 160px">
+                                </div>
+                                <div class="info" style="width: 160px; height: 160px;">
+                                    <div class="info-back">
+                                          
+                                          <h9>김현우</h9>
+                                          <h10>기계공학과</h10>
+                                          
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                        
+    
+                    
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                          <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/profile.php?id=100003406643430" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/sangwon.jpg" alt="김상원" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>김상원</h9>
+                                          <h10>전자공학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                          </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/sujin.park.338863" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/soojin.jpg" alt="박수진" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>박수진</h9>
+                                          <h10>중국어학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/profile.php?id=100003785660242" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/kyunghak.jpg" alt="정경학" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>정경학</h9>
+                                          <h10>한국어학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                
+                
+                
+                <div class="col-1">
+                </div>
+            </div>
+          
+          
+            <div class="row" >
+                <div class="col-1">
+                </div>
+                <div class="col-10" style="height: 180px";>
+                    <div class="container" style="width:860px; margin-left:auto;">    
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                                <a href="https://www.facebook.com/profile.php?id=100004224368058&fref=ts" target="_blank">
+                                    <div class="img">
+                                        <img src="/assets/moonsuk.png" alt="김문석" style="width: 160px; height: 160px">
+                                    </div>
+                                    <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                            <h9>김문석</h9>
+                                            <h10>산업경영공학과</h10>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    
+        
+                    
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/dongkwan.you" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/dongkwan.jpg" alt="유동관" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>유동관</h9>
+                                          <h10>컴퓨터공학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+        
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/castle.in.5" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/sunghan.jpg" alt="류성한" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>류성한</h9>
+                                          <h10>환경공학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                               <a href="https://www.facebook.com/dydrlaks?fref=grp_mmbr_list" target="_blank">
+                                  <div class="img">
+                                    <img src="/assets/wonsuk.jpg" alt="서원석" style="width: 160px; height: 160px">
+                                  </div>
+                                  <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>서원석</h9>
+                                          <h10>신소재공학과</h10>
+                                        </div>
+                                  </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                    
+                    
+                    
+                <div class="col-1">
+                </div>
+            </div>
+          
+
+            <div class="row" style="height: 200px;">
+                  
+                <div class="col-1">
+                </div>
+                
+                <div class="col-10" style="height: 180px";>
+                    <div class="container" style="width:860px; margin-left:auto;">    
+                        <div class="member-image" style="float: left; width: 25% 220px;" >
+                            <div class="ih-item circle effect5">
+                                <a href="https://www.facebook.com/doehoon.kim?fref=grp_mmbr_list" target="_blank">
+                                    <div class="img">
+                                        <img src="/assets/dohoon.jpg" alt="김도훈" style="width: 160px; height: 160px">
+                                    </div>
+                                    <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>김도훈</h9>
+                                          <h10>응용화학과</h10>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    
+                    
+                    
+                    
+                    
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                                <a href="https://www.facebook.com/bohyun.kim.52?fref=grp_mmbr_list" target="_blank">
+                                    <div class="img">
+                                        <img src="/assets/bohyun.jpg" alt="김보현" style="width: 160px; height: 160px">
+                                    </div>
+                                    <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                          <h9>김보현</h9>
+                                          <h10>스포츠의학과</h10>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                          
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                                <a href="https://www.facebook.com/profile.php?id=100003031083147&fref=grp_mmbr_list" target="_blank">
+                                    <div class="img">
+                                        <img src="/assets/junhyun.jpg" alt="정준현" style="width: 160px; height: 160px">
+                                    </div>
+                                    <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                            <h9>정준현</h9>
+                                            <h10>컴퓨터공학과</h10>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="member-image" style="float: left; width: 25% 220px;">
+                            <div class="ih-item circle effect5">
+                                <a href="https://www.facebook.com/jaekyeong.ryu?fref=pb_other" target="_blank">
+                                    <div class="img">
+                                    <img src="/assets/jaekyung.jpg" alt="유재경" style="width: 160px; height: 160px">
+                                    </div>
+                                    <div class="info" style="width: 160px; height: 160px;">
+                                        <div class="info-back">
+                                            <h9>유재경</h9>
+                                            <h10>시각디자인학과</h10>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>    
+                
+                <div class="col-1">
+                </div>
+            
+            </div>
+            </div>
+            
+            <!-- 멤버 더보기 -->
+            
+            <div class="container">
+	            <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#moreview" aria-expanded="false">더 보기</button>
+		       
+		        <div id="moreview" class="collapse" style="height: 180px";>
+		            <hr style="width:70%; padding-right:10%;">
+                    
+                    <div style="margin-top:5%;">
+                    <h11>졸업생</h11> 
+                    <div class="row" >
+                          
+                        <div class="col-1">
+                        </div>
+                        
+                        <div class="col-10" style="height: 180px; margin-top: 5%">
+                            <div class="container" style="width:860px; margin-left:auto;"> 
+                                
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                    <a href="https://www.facebook.com/profile.php?id=100003290396364" target="_blank">
+                                        <div class="img">
+                                            <img src="/assets/sunyeol.jpg" alt="최선열" style="width: 160px; height: 160px">
+                                        </div>
+                                        <div class="info" style="width: 160px; height: 160px;">
+                                            <div class="info-back">
+                                                  
+                                                  <h9>최선열</h9>
+                                                  <h10>건축공학과</h10>
+                                                  
+                                            </div>
+                                        </div>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+            
+                            
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                  <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/profile.php?id=100003406643430" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/jiyung.jpg" alt="황지영" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>황지영</h9>
+                                                  <h10>신소재공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                  </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/sujin.park.338863" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/dajin.jpg" alt="신다진" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>신다진</h9>
+                                                  <h10>컴퓨터공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/profile.php?id=100003785660242" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/jihyun.jpg" alt="양지현" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>양지현</h9>
+                                                  <h10>건축공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        
+                        
+                        
+                        <div class="col-1">
+                        </div>
+                    </div>
+                  
+                  
+                    <div class="row" >
+                        <div class="col-1">
+                        </div>
+                        <div class="col-10" style="height: 180px";>
+                            <div class="container" style="width:860px; margin-left:auto;">    
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                        <a href="https://www.facebook.com/profile.php?id=100004224368058&fref=ts" target="_blank">
+                                            <div class="img">
+                                                <img src="/assets/hyunha.jpg" alt="김현하" style="width: 160px; height: 160px">
+                                            </div>
+                                            <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                    <h9>김현하</h9>
+                                                    <h10>전자공학과</h10>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            
+                
+                            
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/dongkwan.you" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/mookwan.jpg" alt="정무관" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>정무관</h9>
+                                                  <h10>전자공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                
+                
+                                
+                                
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/castle.in.5" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/jaehyun.jpg" alt="서재현" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>서재현</h9>
+                                                  <h10>화학공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                
+                                
+                                <div class="member-image" style="float: left; width: 25% 220px;">
+                                    <div class="ih-item circle effect5">
+                                       <a href="https://www.facebook.com/dydrlaks?fref=grp_mmbr_list" target="_blank">
+                                          <div class="img">
+                                            <img src="/assets/hyunsuk.jpg" alt="유현석" style="width: 160px; height: 160px">
+                                          </div>
+                                          <div class="info" style="width: 160px; height: 160px;">
+                                                <div class="info-back">
+                                                  <h9>유현석</h9>
+                                                  <h10>기계공학과</h10>
+                                                </div>
+                                          </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                            
+                            
+                            
+                        <div class="col-1">
+                        </div>
+                    </div>
+		        </div>      
+		    </div>
+			
+			
+			
+			
+		</div>
+	
+
+        
+    </section>
+    
+    
+    <!--멋사 오티 비디오-->
+    <section id="slide7" class="slide" style="height:100%;">
+        <div class="container" style="width: 100%, height: 100%; margin-left:auto;">
+            <!--<div style="border-bottom:5px solid #df8084; width: 35%; padding-left:0;" >-->
+            <!--<h2 style="margin-bottom: 30px; color:white;"><strong>ORIENTATION VIDEO</strong></h2>-->
+            <!--</div>-->
+            
+            <div style="height:200px; position:relative; padding-top:45%">
+                <a id="play-video" class="video-play-button" href="#video-overlay">
+                  <span style="margin:auto;"></span>
+                </a>
+
+
+
+                  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+                  <script src="index.js"></script>
+            </div>
+            <div id="video-overlay" class="video-overlay">
+                  <a class="video-overlay-close">&times;</a>
+            </div>
+            <div class="container" style="padding-top:10%">
+                
+            </div>
+        
+        </div>
+    </section>
+
+
+        <!--인포메이션 및 후기-->
+        
+        <section id="slide8" class="slide">
+            
+            <div class="row">
+                
+                <div class="col-xs-6 col-sm-4" style="text-align:left; padding-left: 5%;">
+                    <h8 style="padding-left:5%;">contact</h8><br><br><br>
+                    <a class="col-sm-4"
+                    href="https://www.facebook.com/kyungheelion/?fref=ts" target="_blank"
+                    style="width: 60px; height: 60px;">
+                        <img src="/assets/facebook-icon.png/" style="width:50px; height:auto; padding-top:35%;">
+                        </a>
+                    <br><p class="col-sm-8" style="font-family: 'Jeju Gothic', sans-serif; font-size: 1em;">
+                        멋쟁이사자처럼 at 경희대<br>페이스북으로 문의해주세요.</p>
+                </div>
+                
+                <div class="col-xs-6 col-sm-4" style="padding-left: 10%; font-family: 'Jeju Gothic', sans-serif;
+            font-size: 1em;">
+                    <h8><strong>제작 후기</strong></h8><br><br><br>
+                    <p style="text-align:left;">
+                    상원 : 냠냠냠냠<br>경학 : ? <br> 현우 : 우왕
+                    <br>수진 : 여러분 멋사하세요</p>
+                        </p>
+                </div>
+                
+                <div class="col-xs-6 col-sm-4" style="text-align:left; font-family: 'Jeju Gothic', sans-serif;
+            font-size: 1em; padding-left: 8%;">
+                    <h8><strong>information</strong></h8><br><br><br>
+                    <p style="text-align:left;">
+                        경희대학교 국제캠퍼스<br>경기도 용인시 기흥구 덕영대로 1732
+                        <br>COPYRIGHT 2017. <br>LIKELION AT KYUNGHEE GLOBAL<br> ALL RIGHT RESERVED. </p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+   </body>
+
+</html>
+     
