@@ -1,5 +1,14 @@
 class MainController < ApplicationController
     def index
+        require 'open-uri'
+        require 'json'
+        page = open("http://www.nlotto.co.kr/common.do?method=getLottoNumber")
+        
+        lotto_read = page.read 
+        
+        lotto_json = JSON.parse(lotto_read)
+        @lotto_number = [ lotto_json["drwtNo1"], lotto_json["drwtNo2"], lotto_json["drwtNo3"], lotto_json["drwtNo4"], lotto_json["drwtNo5"], lotto_json["drwtNo6"]]
+        @bonus_number = lotto_json["bnusNo"]
         
     end
     
