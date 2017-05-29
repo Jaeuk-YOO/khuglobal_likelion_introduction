@@ -5,14 +5,14 @@
    <head>
        
       <meta charset="UTF-8">
-      <title>likelion_at_kyunghee_inter</title>
+      <title>likelion_at_kyunghee_global</title>
       
       <script>
           $('#play-video').on('click', function(event){
               event.preventDefault();
               $('#video-overlay').addClass('open'); 
               
-              $('#video-overlay').append('<iframe src="https://player.vimeo.com/video/218339153?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" ></iframe>');
+              $('#video-overlay').append('<iframe src="https://player.vimeo.com/video/218339153?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
             });
             
             $('.video-overlay, .video-overlay-close').on('click', function(e){
@@ -266,6 +266,13 @@
              line-height: 150%;
          }
         
+        #lotto_game {
+            font-family: 'Jeju Gothic', sans-serif; 
+            font-size: 1.0em; 
+            color: gray;
+            line-height: 130%;
+        }
+        
          /*#main-image:after {*/
          /*     content: "";*/
          /*     display: block;*/
@@ -397,16 +404,16 @@
                        
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
                             <a class="navbar-brand page-scroll" href="#page-top">
-                                <img src="/assets/logo_wine.png" style="height: 40px; width:auto; margin: auto; margin-top: px;"></a>
+                                <img src="/assets/logo_wine.png" style="height: 40px; width:auto; margin: auto; margin-top: 4px;"></a>
                             <ul class="nav navbar-nav navbar-left" style="font-size: 17px; display: table; text-align:center">
                                 
                                 <li><a class="page-scroll" onclick="fnMove('2')" 
-                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseover="this.style.color='white'; this.style.background='#a40f17';" 
                                 onMouseout="this.style.color='black'; this.style.background='white';"
                                 style="color: black; padding: 35px;">Our Project</a></li>
                                 
                                 <li><a class="page-scroll" onclick="fnMove('4')" 
-                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseover="this.style.color='white'; this.style.background='#a40f17';" 
                                 onMouseout="this.style.color='black'; this.style.background='white';"
                                 style="color: black; padding: 35px;">Schedule</a></li>
                                 
@@ -415,12 +422,12 @@
                             <ul class="nav navbar-nav navbar-right" style="font-size: 17px; display: table;">
                                 
                                 <li><a class="page-scroll" onclick="fnMove('5')" 
-                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseover="this.style.color='white'; this.style.background='#a40f17';" 
                                 onMouseout="this.style.color='black'; this.style.background='white';"
                                 style="color: black; padding:35px;">KHU Festival</a></li>
                                 
                                 <li><a class="page-scroll" onclick="fnMove('6')" 
-                                onMouseover="this.style.color='white'; this.style.background='#df8084';" 
+                                onMouseover="this.style.color='white'; this.style.background='#a40f17';" 
                                 onMouseout="this.style.color='black'; this.style.background='white';"
                                 style="color: black; padding:35px;">Members</a></li>
                                 
@@ -451,7 +458,7 @@
         <div class="container" style="height:100%; padding-left:0;">
             <div>
             <h2 style="margin-bottom: 30px;"><strong>Our Project</strong></h2>
-            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            <div style="border-bottom:5px solid #a40f17; width: 8%;"></div> 
             </div>
             
         </div>
@@ -491,20 +498,22 @@
         
     	<!--2. 로또 -->
     	
-        <div class="container" style="height:100%; padding-top:5%; padding-left: 0px; padding-right: 0px; margin-bottom: 3%;">
+        <div id="lotto_game" class="container" style="height:100%; padding-top:5%; padding-left: 0px; padding-right: 0px; margin-bottom: 3%;">
             
               <div class="row">
                  <div class="col-sm-3 col-md-3" style="margin-bottom:4%;">
                     <h3>02 로또 뽑기 </h3>
                   </div>
                   <div class="col-sm-8 col-md-8" style="padding: 1%;">
-                    <h5>랜덤으로 뽑은 숫자를 실제 지난 회차의 로또 당첨 번호와 비교하여 당첨 결과를 확인해 봅니다.</h5> 
+                    <h5>나눔로또 사이트에서 지난 회차의 당첨번호를 파싱해옵니다.<br> 랜덤으로 숫자를 뽑게하여 파싱해온 지난 회차의 로또 당첨 번호와 비교합니다.<br> 일치하는 정도에 따라  당첨 결과를 확인해 봅니다.</h5> 
                   </div>
              </div>
               <div>
                   <img src="/assets/lotto-page.png" style="width:100%">
               </div>
-              <h4>1 ~ 45 숫자를 채워 넣어주세요.</h4>
+              
+              <div id="lotto_game2" style="margin:5%">
+              <h4>1 ~ 45까지의 중복되지 않은 숫자를 채워 넣어주세요.</h4>
               <div class="input-group input-group-sm">
                     
                   <%(1..6).each do |x|%>
@@ -520,7 +529,9 @@
               </div><br>
               <div class="col-md-12 col-xs-12" id="lotto_result">
               </div>
-        </div>
+            </div>
+         </div>
+         </div>
         <script>
             $( document ).ready(function() {
                 $("#lotto_check").click(function(){
@@ -542,12 +553,21 @@
                     }
                     
                     <%[6,5,4,3,2,1].each_with_index do |y, index|%>
-                    if (chk_count==<%=y%> && bns_count == 0) {
+                    if (chk_count==<%=y%> && chk_count!=5) {
                         $( "#lotto_result" ).append( "<p><%=index+1%>등입니다! <%=y%>개 맞추셨습니다.</p>" );
                     }
                 
-                    else if (bns_count == 1 && chk_count==<%=y%>) {
+                    else if (bns_count == 0 && chk_count==5 && <%=y%>==1) {
+                        $( "#lotto_result" ).append( "<p>3등입니다! 5개 맞추셨습니다.</p>" );
+                    }
+                
+                
+                    else if (bns_count == 1 && chk_count==5 && <%=y%>==1) {
                         $( "#lotto_result" ).append( "<p>2등입니다! 5개, 보너스 번호 맞추셨습니다.</p>" );
+                    }
+                
+                    else if (<%=y%>==1 && chk_count==0){
+                         $( "#lotto_result" ).append( "맞는 번호가 없습니다. 우리는 언제쯤 부자가 될까요." );                   
                     }
                     <%end%>
                 });
@@ -722,7 +742,7 @@
         <div class="container" style="height:100%; padding-left:0;">
             <div>
             <h2 style="margin-bottom: 40px;"><strong>Schedule</strong></h2>
-            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            <div style="border-bottom:5px solid #a40f17; width: 8%;"></div> 
             </div>
         </div>
         <div class="container" style="height:86%">
@@ -737,7 +757,7 @@
     <section id="slide5" class="slide " style="height:100%;">
         
             <div class="container" style="text-align:center; max-width:100%; min-height:700px;">
-                <a href="https://khu-festival-ryucastle.c9users.io/" target="_blank">
+                <a href="http://www.khu-festival.com" target="_blank">
                 <img src="/assets/khufestical_logo_white2.png" style="width:80%; height:auto; padding-top:33%;">
                 </a>
             </div>
@@ -750,7 +770,7 @@
         <div class="container" style="height:100%; padding-left:0; padding-top:5%">
             <div>
             <h2 style="margin-bottom: 40px;"><strong>Members</strong></h2>
-            <div style="border-bottom:5px solid #df8084; width: 8%;"></div> 
+            <div style="border-bottom:5px solid #a40f17; width: 8%;"></div> 
             </div>
         </div>
          
@@ -1303,7 +1323,7 @@
         <div class="container" style="width: 100%, height: 100%; margin-left:auto;">
         
         
-            <!--<div style="border-bottom:5px solid #df8084; width: 35%; padding-left:0;" >-->
+            <!--<div style="border-bottom:5px solid #a40f17; width: 35%; padding-left:0;" >-->
             <!--<h2 style="margin-bottom: 30px; color:white;"><strong>ORIENTATION VIDEO</strong></h2>-->
             <!--</div>-->
             
